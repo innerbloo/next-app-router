@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 import style from './page.module.css';
@@ -10,7 +11,7 @@ import { delay } from '@/util/delay';
 export const dynamic = 'force-dynamic';
 
 async function AllBooks() {
-    await delay(1500);
+    // await delay(1500);
 
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`,
@@ -33,7 +34,7 @@ async function AllBooks() {
 }
 
 async function RecoBooks() {
-    await delay(3000);
+    // await delay(3000);
 
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/random`,
@@ -54,6 +55,16 @@ async function RecoBooks() {
         </div>
     );
 }
+
+export const metadata: Metadata = {
+    title: '한입 북스',
+    description: '한입 북스에 등록된 도서를 만나보세요',
+    openGraph: {
+        title: '한입 북스',
+        description: '한입 북스에 등록된 도서를 만나보세요',
+        images: ['/thumbnail.png'],
+    },
+};
 
 export default function Home() {
     return (
