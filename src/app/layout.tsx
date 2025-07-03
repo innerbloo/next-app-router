@@ -39,6 +39,24 @@ export default function RootLayout({
         <html lang="en">
             <head>
                 <Script
+                    src="https://www.googletagmanager.com/gtag/js?id=G-5N1D1TVQQF"
+                    strategy="afterInteractive"
+                />
+                <Script
+                    id={'gtag-init'}
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-5N1D1TVQQF', {
+                page_path: window.location.pathname,
+              });
+            `,
+                    }}
+                />
+                <Script
                     id={'gtm-script'}
                     strategy="afterInteractive"
                     dangerouslySetInnerHTML={{ __html: gtmInitCode }}
