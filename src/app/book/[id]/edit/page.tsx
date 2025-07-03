@@ -1,4 +1,4 @@
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 import style from './page.module.css';
 
@@ -7,15 +7,17 @@ import { updateBookAction } from '@/actions/update-book.action';
 export default async function EditBookPage({
     params,
 }: {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }) {
+    const { id } = await params;
+
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`,
+        `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${id}`,
     );
 
     const updateFormAction = async (formData: FormData) => {
         'use server';
-        return updateBookAction(formData, params.id);
+        return updateBookAction(formData, id);
     };
 
     if (!response.ok) notFound();
