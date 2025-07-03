@@ -21,6 +21,10 @@ async function SearchResult({ q }: { q: string }) {
 
     const books: BookData[] = await response.json();
 
+    if (books.length === 0) {
+        return <div>검색 결과가 없습니다.</div>;
+    }
+
     return (
         <div>
             {books.map((book) => (

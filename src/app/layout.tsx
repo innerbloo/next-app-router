@@ -1,8 +1,10 @@
 import Link from 'next/link';
+import Script from 'next/script';
 
 import './globals.css';
 import style from './layout.module.css';
 
+import { gtmInitCode, gtmScriptIframe } from '@/constants/platform-commons';
 import { BookData } from '@/types';
 
 async function Footer() {
@@ -35,7 +37,19 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <Script
+                    id={'gtm-script'}
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{ __html: gtmInitCode }}
+                />
+            </head>
             <body>
+                <noscript
+                    dangerouslySetInnerHTML={{
+                        __html: gtmScriptIframe,
+                    }}
+                />
                 <div className={style.container}>
                     <header>
                         <Link href={'/'}>📚 ONEBITE BOOKS</Link>

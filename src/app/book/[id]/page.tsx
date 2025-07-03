@@ -59,6 +59,7 @@ async function BookDetail({ bookId }: { bookId: string }) {
                 {author} | {publisher}
             </div>
             <div className={style.description}>{description}</div>
+            <div></div>
         </section>
     );
 }

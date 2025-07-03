@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.75.5",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "next": "15.1.7",
     "prettier": "^3.5.1",

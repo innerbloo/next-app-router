@@ -1,0 +1,48 @@
+.container {
+
+}
+
+.form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form_container input, .form_container textarea {
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 5px;
+}
+
+.form_container textarea {
+    width: 100%;
+    min-height: 200px;
+    resize: vertical;
+}
+
+.input_container {
+    display: flex;
+    gap: 5px;
+}
+
+.input_container > input {
+    flex: 1;
+}
+
+.button_container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button_container button {
+    /*width: 100%;*/
+    width: 80px;
+    line-height: 35px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(37, 147, 255);
+    color: white;
+    cursor: pointer;
+}

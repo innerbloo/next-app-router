@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 
 import style from './page.module.css';
 
@@ -8,7 +9,7 @@ import type { BookData } from '@/types';
 async function AllBooks() {
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`,
-        { cache: 'force-cache' },
+        { next: { tags: [`book`] } },
     );
 
     if (!response.ok) {
@@ -61,11 +62,18 @@ export default function Home() {
     return (
         <div className={style.container}>
             <section>
-                <h3>지금 추천하는 도서</h3>
+                <div className={style.section_title}>
+                    <h3>지금 추천하는 도서</h3>
+                </div>
                 <RecoBooks />
             </section>
             <section>
-                <h3>등록된 모든 도서</h3>
+                <div className={style.section_title}>
+                    <h3>등록된 모든 도서</h3>
+                    <button>
+                        <Link href={'/write'}>추가</Link>
+                    </button>
+                </div>
                 <AllBooks />
             </section>
         </div>
